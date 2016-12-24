@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Kingsmouth",
+    "name": "Kingsmouth Town",
     "url": "./img/01_kingsmouth_1024x1024_1080x1080.jpg",
     "xMax": 1024,
     "yMax": 1024,
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "name": "Scorched Desert",
+    "name": "The Scorched Desert",
     "url": "./img/04_scorcheddesert_720x1024_1024x1536.jpg",
     "xMax": 720,
     "yMax": 1024,
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "name": "Besieged Farmlands",
+    "name": "The Besieged Farmlands",
     "url": "./img/06_besiegedfarmlands_1536x1536_1080x1080.jpg",
     "xMax": 1536,
     "yMax": 1536,

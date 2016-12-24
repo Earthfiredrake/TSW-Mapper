@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+
+		<script language="javascript" type="text/javascript" src="./js/p5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/tswmapper.js"></script>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+
+		<title>TSW Mapper - Parser</title>
+	</head>
+	<body>
+    <div id="header">
+      <h1>TSW Mapper</h1>
+    </div>
+
+
+		<div id="javascriptnotice">
+			This page requires Javascript. You're seeing this message as you have Javascript disabled.
+		</div>
+
+		<div class="leftpanel">
+		</div>
+		<div class="rightpanel">
+			<form>
+				<div>
+					<label for="input">Input:</label>
+					<textarea name="input" id="input" rows="10" cols="70" onpaste="paste()"></textarea>
+				</div>
+				<div>
+					<label for="output">Output:</label>
+					<textarea name="output" id="output" rows="10" cols="70"></textarea>
+				</div>
+
+				<input type="submit" id="submit" value="Process" onclick="process()">
+			</form>
+		</div>
+
+		<script>
+			function paste() {
+				// Paste event triggers before content updated so need
+				// brief delay.
+				setTimeout(function(){
+					process();
+				}, 0);
+			}
+
+			function process() {
+				var chat_text = document.getElementById("input").value;   		// Get
+				var formated_text = tswMapper.parser.process(chat_text);  		// Process
+				document.getElementById("output").value = formated_text;			// Set
+			}
+
+				var baseURL = window.location.href;
+				baseURL = baseURL.slice(0, baseURL.lastIndexOf("/"));
+				var mapInfoURL = baseURL + "/dat/map_info.json";
+				tswMapper.loadMapInfo(mapInfoURL);
+
+
+      }
+		</script>
+	</body>
+</html>

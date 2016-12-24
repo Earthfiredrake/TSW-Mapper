@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <script language="javascript" type="text/javascript" src="./js/p5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/p5.dom.min.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/tswmapper.js"></script>
+    <script language="javascript" type="text/javascript" src="./js/sketch.js"></script>
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+
+    <title>TSW Mapper</title>
+  </head>
+
+<body>
+  <a href="https://github.com/AliceOrwell/TSW-Mapper"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+  <div id="header">
+    <h1>TSW Mapper</h1>
+  </div>
+
+  <div>
+    <a href="./index.html">Home</a>
+    <a href="./parser.html">Parser</a>
+    <a href="./about.html">About</a>
+  </div>
+
+  <div id="javascriptnotice">
+    This page requires Javascript. You're seeing this message as you have Javascript disabled.
+  </div>
+
+  <div class="leftpanel">
+    <div id="controls">
+      <div id="map-view">View:</div>
+      <div id="maps">Map:</div>
+      <div id="coords">Coordinates:</div>
+    </div>
+  </div>
+
+  <div class="rightpanel">
+    <div id="canvas"></div>
+  </div>
+
+  <script>
+    window.onload = function(e) {
+      // Hide Javascript disabled notice
+      document.getElementById("javascriptnotice").style.display = 'none';
+    }
+  </script>
+</body>
+</html>

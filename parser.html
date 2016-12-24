@@ -14,6 +14,11 @@
       <h1>TSW Mapper</h1>
     </div>
 
+	<div>
+		<a href="./index.html">Home</a>
+		<a href="./parser.html">Parser</a>
+		<a href="./about.html">About</a>
+	</div>
 
 		<div id="javascriptnotice">
 			This page requires Javascript. You're seeing this message as you have Javascript disabled.
@@ -51,12 +56,19 @@
 				document.getElementById("output").value = formated_text;			// Set
 			}
 
+			window.onload = function(e) {
 				var baseURL = window.location.href;
 				baseURL = baseURL.slice(0, baseURL.lastIndexOf("/"));
 				var mapInfoURL = baseURL + "/dat/map_info.json";
 				tswMapper.loadMapInfo(mapInfoURL);
 
+				// Hide Javascript disabled notice
+				document.getElementById("javascriptnotice").style.display = 'none';
 
+				// Prevent submit button posting the form
+				document.getElementById("submit").addEventListener("click", function(event){
+					event.preventDefault();
+				});
       }
 		</script>
 	</body>

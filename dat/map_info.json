@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "name": "Kingsmouth",
+    "url": "./img/01_kingsmouth_1024x1024_1080x1080.jpg",
+    "xMax": 1024,
+    "yMax": 1024,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 2,
+    "name": "The Savage Coast",
+    "url": "./img/02_savagecoast_1024x1024_1080x1080.jpg",
+    "xMax": 1024,
+    "yMax": 1024,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 3,
+    "name": "The Blue Mountain",
+    "url": "./img/03_bluemountain_1024x1024_1080x1080.jpg",
+    "xMax": 1024,
+    "yMax": 1024,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 4,
+    "name": "Scorched Desert",
+    "url": "./img/04_scorcheddesert_720x1024_1024x1536.jpg",
+    "xMax": 720,
+    "yMax": 1024,
+    "imgWidth": 1024,
+    "imgHeight": 1536
+  },
+  {
+    "id": 5,
+    "name": "City of the Sun God",
+    "url": "./img/05_cityofthesungod_1024x1024_1080x1080.jpg",
+    "xMax": 1024,
+    "yMax": 1024,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 6,
+    "name": "Besieged Farmlands",
+    "url": "./img/06_besiegedfarmlands_1536x1536_1080x1080.jpg",
+    "xMax": 1536,
+    "yMax": 1536,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 7,
+    "name": "The Shadowy Forest",
+    "url": "./img/07_shadowyforest_1536x1536_1080x1080.jpg",
+    "xMax": 1536,
+    "yMax": 1536,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 8,
+    "name": "The Carpathian Fangs",
+    "url": "./img/08_carpatianfangs_1536x1536_1080x1080.jpg",
+    "xMax": 1536,
+    "yMax": 1536,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  },
+  {
+    "id": 9,
+    "name": "Kaidan",
+    "url": "./img/09_kaidan_1024x1024_1080x1080.jpg",
+    "xMax": 1024,
+    "yMax": 1024,
+    "imgWidth": 1080,
+    "imgHeight": 1080
+  }
+]

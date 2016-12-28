@@ -32,6 +32,20 @@ QUnit.test("Decoupling", function(assert) {
 });
 
 QUnit.module("parser.extract");
+QUnit.test("No whitespace on end", function(assert) {
+	var name = "The Carpathian Fangs";
+	var x = 1000;
+	var y = 2000;
+	var coord1 = new tswMapper.model.coordinate(name, x, y);
+	coord2 = new tswMapper.model.coordinate(name, 1001, 2002);
+
+	var text = "The Carpathian Fangs (1000, 2000) - Meetup: Auto -\n";
+	text = text + "The Carpathian Fangs (1001, 2002) - Meetup: Auto -";
+	var result = tswMapper.parser.extract(text);
+
+	assert.deepEqual(result, [coord1, coord2]);
+});
+
 QUnit.test("4 digit coordinates", function(assert) {
 	var name = "The Carpathian Fangs";
 	var x = 1000;

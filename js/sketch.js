@@ -38,6 +38,9 @@ function populateControls(level) {
   }
 
   if (level == 0) {
+    selMapIndex = 0;
+    selCoordIndex = 0;
+
     if (selView !== undefined) {
       selView.remove();
     }
@@ -51,6 +54,8 @@ function populateControls(level) {
   }
 
   if (level <= 1) {
+    selCoordIndex = 0;
+
     if (selMap !== undefined) {
       selMap.remove();
     }
@@ -103,16 +108,27 @@ function drawPoints() {
     fill(255, 0, 0);
     rectMode(CENTER);
 
-    var x = map(p[0], m.xMax, 0, m.imgWidth, 0);
-    var y = map(p[1], m.yMax, 0, 0, m.imgHeight);
-    rect(x*scl, y*scl, 4, 4);
+    p = scaleCoord(p, m);
+    rect(p[0], p[1], 4, 4);
   }
 }
 
 function drawSelected() {
-    noFill();
-    var r = 15;
-    ring(p[0]*scl, height-p[1]*scl, r);
+  var c = getMapCoord();
+  var m = getMap();
+
+  noFill();
+
+  var r = 15;
+  c = scaleCoord(c, m);
+  ring(c[0], c[1], r);
+}
+
+function scaleCoord(coord, map) {
+  var x = coord[0]*scl * (map.imgWidth/map.xMax);
+  var y = coord[1]*scl * (map.imgHeight/map.yMax);
+  c = [x, (map.imgHeight*scl)-y];
+  return c;
 }
 
 function selectViewEvent() {
@@ -144,16 +160,30 @@ function selectMapEvent() {
 }
 
 function selectCoordEvent() {
+  var index = 0;
+
+  var v = selCoord.value();
+  var coords = getMapCoords();
+  for (var i = 0; i < coords.length; i++) {
+    var coord = coords[i][0] + "," + coords[i][1];
+    if (v == coord) {
+      index = i;
+    }
+  }
+  selCoordIndex = index;
   refresh(3);
 }
 
 function refresh(level) {
+  background(255);
+
   populateControls(level);
 
   var i = getMap().url;
   loadImage(i, function(img) {
     image(img, 0, 0, floor(img.width*scl), floor(img.height*scl));
     drawPoints();
+    drawSelected();
   });
 
 }

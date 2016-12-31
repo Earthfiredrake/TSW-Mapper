@@ -10,6 +10,7 @@ var tswMapper = {
     return this.maps;
   },
   data: {
+    loaded: false,
     mapInfo: [],
     views: []
   },
@@ -43,6 +44,7 @@ var tswMapper = {
   loadView: function(url) {
     function callback(data) {
       tswMapper.data.views.push(data);
+      tswMapper.data.loaded = true;
     }
 
     var p5js = new p5();
@@ -60,6 +62,9 @@ var tswMapper = {
 
     var p5js = new p5();
     p5js.loadJSON(url, callback);
+  },
+  isDataLoaded: function() {
+    return tswMapper.data.loaded;
   },
   parser: {
     extract: function(input_text) {

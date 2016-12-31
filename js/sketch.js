@@ -16,8 +16,17 @@ function setup() {
   var canvas = createCanvas(1080*scl, 1080*scl);
   canvas.parent("canvas");
 
-  refresh();
-  noLoop();
+  // If data isn't loaded wait a bit check again.
+  function delayTimer() {
+    if (tswMapper.isDataLoaded()) {
+      refresh();
+      noLoop();
+    }
+    else {
+      setTimeout(delayTimer, 1000);
+    }
+  }
+  delayTimer();
 }
 
 function draw() {

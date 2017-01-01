@@ -10,6 +10,7 @@ var tswMapper = {
     return this.maps;
   },
   data: {
+    loaded: false,
     mapInfo: [],
     views: []
   },
@@ -21,7 +22,13 @@ var tswMapper = {
       this.str = function() {
         var s = this.name + " " + this.x + ", " + this.y;
         return s;
-      }
+      };
+      this.shoutout = function() {
+        // Kingsmouth Town (404, 280) - Meetup: Auto -
+        var c = "(" + this.x + ", " + this.y + ")";
+        var s = this.name + " " + c + " - Meetup: Auto - ";
+        return s;
+      };
     },
     map: function(name, x, y) {
       this.url = "";
@@ -43,6 +50,7 @@ var tswMapper = {
   loadView: function(url) {
     function callback(data) {
       tswMapper.data.views.push(data);
+      tswMapper.data.loaded = true;
     }
 
     var p5js = new p5();
@@ -60,6 +68,9 @@ var tswMapper = {
 
     var p5js = new p5();
     p5js.loadJSON(url, callback);
+  },
+  isDataLoaded: function() {
+    return tswMapper.data.loaded;
   },
   parser: {
     extract: function(input_text) {
@@ -113,10 +124,12 @@ var tswMapper = {
       }
       return maps;
     },
-    process: function(input_text) {
-      var data = this.extract(input_text);
-      data = this.sort(data);
-      data = this.filter(data);
+    process: function(data, preprocessed) {
+      if (preprocessed != true) {
+        data = this.extract(data);
+        data = this.sort(data);
+        data = this.filter(data);
+      }
       data = this.group(data);
       data = this.merge(data, tswMapper.data.mapInfo);
       data = this.format(data);
@@ -159,6 +172,10 @@ var tswMapper = {
           if (xDiff >= minDist || yDiff >= minDist) {
             output.push(entry);
           }
+          else {
+            var msg = "Dupe: " + entry.str() + " -- " + pEntry.str();
+            console.log(msg)
+          }
         }
         else {
           //Names don't match so not a dupe
@@ -167,8 +184,16 @@ var tswMapper = {
       }
       return output;
     },
-    format: function(entries) {
+    format: function(entries, style) {
+      var output = ""
+      if (style == "shoutout") {
+        for (var i = 0; i < entries.length; i++) {
+          output += entries[i].shoutout() + "\n";
+        }
+        return output;
+      }
       return JSON.stringify(entries);
     }
+
   }
 }

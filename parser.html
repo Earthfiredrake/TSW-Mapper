@@ -33,6 +33,14 @@
 					<textarea name="input" id="input" rows="10" cols="70" onpaste="paste()"></textarea>
 				</div>
 				<div>
+					<label for="sorted">Sorted:</label>
+					<textarea name="sorted" id="sorted" rows="10" cols="70"></textarea>
+				</div>
+				<div>
+					<label for="filtered">Filtered:</label>
+					<textarea name="filtered" id="filtered" rows="10" cols="70"></textarea>
+				</div>
+				<div>
 					<label for="output">Output:</label>
 					<textarea name="output" id="output" rows="10" cols="70"></textarea>
 				</div>
@@ -52,7 +60,26 @@
 
 			function process() {
 				var chat_text = document.getElementById("input").value;   		// Get
-				var formated_text = tswMapper.parser.process(chat_text);  		// Process
+
+				var data = tswMapper.parser.extract(chat_text);
+				console.log("Entries: " + data.length);
+
+				data = tswMapper.parser.sort(data);
+				var sortedLen = data.length;
+				console.log("Sorted: " + sortedLen);
+				var sorted = tswMapper.parser.format(data, "shoutout");
+				document.getElementById("sorted").value = sorted;
+
+				data = tswMapper.parser.filter(data);
+				var filteredLen = data.length;
+				var diff = sortedLen - filteredLen;
+				var msg = "Filtered: " + filteredLen;
+				msg =  msg + " (Removed " + diff + ")";
+				console.log(msg);
+				var sorted = tswMapper.parser.format(data, "shoutout");
+				document.getElementById("filtered").value = sorted;
+
+				var formated_text = tswMapper.parser.process(data, true);  		// Process
 				document.getElementById("output").value = formated_text;			// Set
 			}
 

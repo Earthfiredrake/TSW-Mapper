@@ -29,11 +29,11 @@
   {
     "id": 4,
     "name": "The Scorched Desert",
-    "url": "./img/04_scorcheddesert_1024x1536_720x1024.jpg",
+    "url": "./img/04_scorcheddesert_1024x1536_720x1080.jpg",
     "xMax": 1024,
     "yMax": 1536,
     "imgWidth": 720,
-    "imgHeight": 1024
+    "imgHeight": 1080
   },
   {
     "id": 5,
